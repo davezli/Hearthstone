@@ -79,7 +79,7 @@ int open_to_completion() {
             // determine the type of card
             if(type < rates[0]) {
                 int id = rand() % numC;
-				openedC++;
+                openedC++;
                 if(arrC[id] >= 2) {
                     currdust += deC;
                 }
@@ -90,11 +90,11 @@ int open_to_completion() {
             }
             else if (type < rates[1]) {
                 currdust += deGC;
-				openedGC++;
+                openedGC++;
             }
             else if(type < rates[2]) {
                 int id = rand() % numR;
-				openedR++;
+                openedR++;
                 if(arrR[id] >= 2) {
                     currdust += deR;
                 }
@@ -105,11 +105,11 @@ int open_to_completion() {
             }
             else if (type < rates[3]) {
                 currdust += deGR;
-				openedGR++;
+                openedGR++;
             }
             else if(type < rates[4]) {
                 int id = rand() % numE;
-				openedE++;
+                openedE++;
                 if(arrE[id] >= 2) {
                     currdust += deE;
                 }
@@ -120,11 +120,11 @@ int open_to_completion() {
             }
             else if (type < rates[5]) {
                 currdust += deGE;
-				openedGE++;
+                openedGE++;
             }
             else if(type < rates[6]) {
                 int id = rand() % numL;
-				openedL++;
+                openedL++;
                 if(arrL[id] >= 2) {
                     currdust += deL;
                 }
@@ -134,13 +134,13 @@ int open_to_completion() {
                 }
             }
             else if (type < rates[7]) {
-				openedGL++;
+                openedGL++;
                 currdust += deGL;
             }
         }
     }
-	openedDust += currdust;
-	neededDust += goaldust;
+    openedDust += currdust;
+    neededDust += goaldust;
     return pack;
 }
 
@@ -149,27 +149,28 @@ int main() {
     srand(time(0));
     int trials = 10000;
     int total_packs = 0;
-	int worst = 0;
-	int best = 1000;
+    int worst = 0;
+    int best = 1000;
     for(int i = 0; i < trials; i++) {
         int buffer = open_to_completion();
-		total_packs += buffer;
-		worst = max(worst,buffer);
-		best = min(best,buffer);
+        total_packs += buffer;
+        worst = max(worst,buffer);
+        best = min(best,buffer);
     }
-	cout << "it will take from " << best << " to " << worst << " packs to complete TGT, ";
-	cout << "with an average of " << (total_packs/trials) << " packs." << endl;
-	if(DEBUG) {
-		cout << "I opened " << (openedC/trials) << " commons." << endl;
-		cout << "I opened " << (openedGC/trials) << " golden commons." << endl;
-		cout << "I opened " << (openedR/trials) << " rares." << endl;
-		cout << "I opened " << (openedGR/trials) << " golden rares." << endl;
-		cout << "I opened " << (openedE/trials) << " epics." << endl;
-		cout << "I opened " << (openedGE/trials) << " golden epics." << endl;
-		cout << "I opened " << (openedL/trials) << " legendaries." << endl;
-		cout << "I opened " << (openedGL/trials) << " golden legendaries." << endl;
-		cout << "I opened " << (openedDust/trials) << " dust." << endl;
-		cout << "I needed " << (neededDust/trials) << " dust." << endl;
-	}		
+    cout << "it will take from " << best << " to " << worst << " packs to complete TGT, ";
+    cout << "with an average of " << (total_packs/trials) << " packs." << endl;
+    if(DEBUG) {
+        cout << "I opened " << (openedC/trials) << " commons." << endl;
+        cout << "I opened " << (openedGC/trials) << " golden commons." << endl;
+        cout << "I opened " << (openedR/trials) << " rares." << endl;
+        cout << "I opened " << (openedGR/trials) << " golden rares." << endl;
+        cout << "I opened " << (openedE/trials) << " epics." << endl;
+        cout << "I opened " << (openedGE/trials) << " golden epics." << endl;
+        cout << "I opened " << (openedL/trials) << " legendaries." << endl;
+        cout << "I opened " << (openedGL/trials) << " golden legendaries." << endl;
+        cout << "I opened " << (openedDust/trials) << " dust." << endl;
+        cout << "I needed " << (neededDust/trials) << " dust." << endl;
+    }
 }
+
 
