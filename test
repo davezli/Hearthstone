@@ -1,5 +1,0 @@
-#!/bin/bash
-
-g++ howmany.cc
-./a.out
-rm ./a.out
